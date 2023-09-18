@@ -192,17 +192,7 @@ def run_cv():
 
 @app.route('/get_students', methods=['POST'])
 def get_students():
-    # Get the name parameter from the POST request
 
-    # if name:
-        # Retrieve the object with the provided name from the MongoDB collection
-
-
-        # if object_to_get:
-        #     object_to_get['_id'] = str(object_to_get['_id'])
-        #     return jsonify({"object": object_to_get}), 200
-        # else:
-        #     return jsonify({'message': 'Object not found'}), 404
         try:
             return jsonify(students), 200
         except:
@@ -215,10 +205,10 @@ def get_students():
 
 if __name__ == "__main__":
     flask_thread = threading.Thread(target=lambda: app.run(host='0.0.0.0', port=2526))
-    cv_thread = threading.Thread(target=run_cv)
+    # cv_thread = threading.Thread(target=run_cv)
 
     flask_thread.daemon = True
-    cv_thread.daemon = True
+    # cv_thread.daemon = True
 
     flask_thread.start()
     run_cv()
